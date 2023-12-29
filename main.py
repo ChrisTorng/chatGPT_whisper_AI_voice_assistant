@@ -35,6 +35,12 @@ def decipher(audio):
     system_message = response["choices"][0]["message"]["content"]
     pythoncom.CoInitialize()
     speaker = win32com.client.Dispatch("SAPI.SpVoice")
+
+    for voice in speaker.GetVoices():
+        if "Chinese (Taiwan)" in voice.GetDescription():
+            speaker.Voice = voice
+            break
+
     speaker.Speak(system_message)
     # myobj = gTTS(text=system_message, lang=language, slow=False)
     # myobj.save("welcome.mp3")

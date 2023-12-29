@@ -1,3 +1,20 @@
+# My steps
+
+Install [FFmpeg Essentials](https://www.ffmpeg.org/download.html)
+`set ffprobe=(ffmpeg-6.0-essentials_build\bin)`
+Rename `.env.sample` to `.env`
+Fill in (OpenAI API Key) and (...FFmpeg\ffmpeg-6.0-essentials_build\bin)?
+```
+set NO_PROXY=localhost,127.0.0.1,::1
+set path=%path%;D:\Downloads\Tools\FFmpeg\ffmpeg-6.0-essentials_build\bin
+```
+
+```
+python -m venv .venv
+pip install -r requirements.txt
+python main.py
+```
+
 Voice Assistant with ChatGPT, Whisper API, Gradio, and TTS APIs
 ===============================================================
 

@@ -24,6 +24,7 @@ def decipher(audio):
     # Using openAI's speech to text model
     audio_file = open(audio, "rb")
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
+    print(transcript["text"])
 
     messages.append({"role": "user", "content": transcript["text"]})
 
@@ -33,6 +34,8 @@ def decipher(audio):
     )
 
     system_message = response["choices"][0]["message"]["content"]
+    print(system_message)
+
     pythoncom.CoInitialize()
     speaker = win32com.client.Dispatch("SAPI.SpVoice")
 
@@ -58,5 +61,5 @@ def decipher(audio):
 
 # Using Gradio's audio Interface 
 interface = gr.Interface(fn=decipher, inputs=gr.Audio(
-    source="microphone", type="filepath"), outputs="text").launch()
+    source="microphone", type="filepath"), outputs="text", share=True).launch()
 interface.launch()

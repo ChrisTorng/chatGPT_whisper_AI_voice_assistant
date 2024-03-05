@@ -23,7 +23,7 @@ def decipher(audio):
 
     # Using openAI's speech to text model
     audio_file = open(audio, "rb")
-    transcript = openai.Audio.transcribe("whisper-1", audio_file)
+    transcript = openai.Audio.transcribe("whisper-1", audio_file, language="zh")
     print(transcript["text"])
 
     messages.append({"role": "user", "content": transcript["text"]})
